@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Junhan & Tracy's daily meals
+        </title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0=" crossorigin="anonymous">
+        <!-- I can use my own fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img src="img/devjane.png" alt="">
+            </div>
+
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class ="hamburger"></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="/#home" class ="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="/#services" class ="nav__link">My Service</a></li>
+                    <li class="nav__item"><a href="/#about" class ="nav__link">About me</a></li>
+                    <li class="nav__item"><a href="/#work" class ="nav__link">My Work</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="intro"> 
+            <h1 class="section__title section__title--intro">
+                The <strong> <%= keyword %> Foods </strong>
+                
+            </h1>
+            <p class="section__subtitle section__subtitle--intro">A short subtitle</p>
+            <img src="img/korean-img-main.png" alt=" " class="intro__img">
+        </section>
+
+        <div class="portfolio-item-individual">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl tincidunt eget nullam non. Quis hendrerit dolor magna eget est lorem ipsum dolor sit. Volutpat odio facilisis mauris sit amet massa. Commodo odio aenean sed adipiscing diam donec adipiscing tristique. Mi eget mauris pharetra et. Non tellus orci ac auctor augue. Elit at imperdiet dui accumsan sit.</p>
+         </div>
+         <div class="scrollmenu">
+            <div>
+                <% if(posts == null || posts.length == 0){ %>
+                    <p>There is no data to show :(</p>
+                <% }else{ %>
+                <% posts.forEach(function(post){ %>
+                    <div class="menuItem">
+                        <a href="/items?searchType=style&keyword=korean" class="ingredient__item">
+                            <h3><%= post.title%></h3>
+                            <p><%= post.body%></p>
+                            <p>Cooker: <%= post.author.username%></p>
+                            <% if(post.attachment.serverFileName){ %>
+                                <img src="/admin/files/<%= post.attachment.serverFileName %>/<%= post.attachment.originalFileName %>" alt=" " class="food__img">
+                            <% } %>
+                        </a>
+                    </div>
+                <% }) %>
+                <% } %>
+            </div>
+        </div>
+
+        <%- include('../partials/footer') %>
+        <script src="js/index.js"></script>
+
+    </body>
+</html>

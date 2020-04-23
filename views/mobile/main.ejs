@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Let's enjoy our meal!
+        </title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0=" crossorigin="anonymous">
+        <!-- I can use my own fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img src="img/junhank-logo.png" alt="">
+            </div>
+
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class ="hamburger"></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class ="nav__link">Main</a></li>
+                    <li class="nav__item"><a href="#style" class ="nav__link">Style</a></li>
+                    <li class="nav__item"><a href="#random" class ="nav__link">Random</a></li>
+                    <li class="nav__item"><a href="#ingredients" class ="nav__link">Ingredient</a></li>
+                    <li class="nav__item"><a href="#search" class ="nav__link">Search</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Introduction -->
+        <section class="intro" id="home"> 
+            <h1 class="section__title section__title--intro">
+                Let's enjoy <strong> Our Meal </strong>
+            </h1>
+            <p class="section__subtitle section__subtitle--intro">It's our daily choice!</p>
+            <img src="img/logo-img.jpg" alt="porridge" class="intro__img">
+        </section>
+        
+        <!-- By Style -->
+        <section class="meal-style" id="style">
+            <h2 class="section__title section__title--style">By Style</h2> 
+            <div class="styles">
+                <% if(styles == null || styles.length == 0){ %>
+                    <p>There is no data to show :( </p>
+                <% } else { %>
+                    <% styles.forEach(function(style) { %>
+                        <div class="style">
+                            <a href="/items?searchType=style&keyword=<%= style.name %>&id=<%= style._id %>" class="style__item">
+                                <h3><%= style.name %></h3>
+                                <p><%= style.description %></p>
+                            </a>
+                        </div>
+                    <% }) %>
+                <% } %>
+            </div>
+
+            <!-- <a href="#ingredients" class="btn">Ingredients</a> -->
+        </section>
+
+        <!-- Random -->
+        <section class="random-select" id="random">
+            <h2 class="section__title section__title--random">Randomly</h2>
+            <p class="section__subtitle section__subtitle--random">
+                Confused? Any 5 great meals we had will be shown randomly.
+            </p>
+
+            <div class="randomly__body">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl tincidunt eget nullam non. Quis hendrerit dolor magna eget est lorem ipsum dolor sit. Volutpat odio facilisis mauris sit amet massa. Commodo odio aenean sed adipiscing diam donec adipiscing tristique. Mi eget mauris pharetra et. Non tellus orci ac auctor augue. Elit at imperdiet dui accumsan sit.
+                </p>
+            </div>
+            <img src="img/random-img.png" alt="Junhan" class="random__img">
+            <!-- <a href="/items?searchType=random" class="ingredient__item">
+                <img src="img/random-img.png" alt="Junhan" class="random__img">
+            </a> -->
+        </section>
+
+        <!-- By ingredients Work -->
+        <section class="by-ingredients" id="ingredients">
+            <h2 class="section__title section__title--ingredients">Ingredients</h2>
+            <p class="section__subtitle section__subtitle--ingredients"> Meal Selection by Main Ingredients</p>
+
+            <div class="ingredient">
+                <a href="/items?searchType=ingredient&keyword=rice" class="ingredient__item">
+                    <img src="img/rice.png" alt="" class="ingredient__img">
+                </a>
+                <a href="/items?searchType=ingredient&keyword=breads" class="ingredient__item">
+                    <img src="img/breads.png" alt="" class="ingredient__img">
+                </a>
+                <a href="/items?searchType=ingredient&keyword=meats" class="ingredient__item">
+                    <img src="img/meats.png" alt="" class="ingredient__img">
+                </a>
+                <a href="/items?searchType=ingredient&keyword=noodles" class="ingredient__item">
+                    <img src="img/noodles.png" alt="" class="ingredient__img">
+                </a>
+                <a href="/items?searchType=ingredient&keyword=vegetables" class="ingredient__item">
+                    <img src="img/vegetables.png" alt="" class="ingredient__img">
+                </a>
+                <a href="/items?searchType=ingredient&keyword=seafoods" class="ingredient__item">
+                    <img src="img/seafoods.jpg" alt="" class="ingredient__img">
+                </a>
+            </div>
+        </section>
+
+        <%- include('../partials/footer') %>
+         <script src="js/index.js"></script>
+    </body>
+</html>

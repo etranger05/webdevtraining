@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light mb-3">
+  <div class="container">
+    <div class="navbar-brand">Junhan and Tracy's Today's Meal</div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a href="/admin" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="/admin/about" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="/admin/posts" class="nav-link">Board</a></li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <% if(isAuthenticated){ %>
+          <li class="nav-item"><a href="/admin/users/<%= currentUser.username %>" class="nav-link">My Account</a></li>
+          <li class="nav-item"><a href="/admin/logout" class="nav-link">Logout</a></li>
+        <% } else { %>
+          <li class="nav-item"><a href="/admin/users/new" class="nav-link">Sign Up</a></li>
+          <li class="nav-item"><a href="/admin/login" class="nav-link">Login</a></li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>
